@@ -6,6 +6,8 @@ import { DataContext } from './context/dataContext'
 import { createResource as fetchData} from './helper'
 import Gallery from './components/gallery';
 import Spinner from './components/spinner';
+import ItemCard from './components/itemCard';
+
 
 function App() {
   let [data,setData] = useState(null)
