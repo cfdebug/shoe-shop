@@ -1,7 +1,7 @@
 const Item = (props) => {
     return (
         <div className="item">
-            <img src={props.item.small} alt={props.item.name} />
+            <img src={props.item.image.small} alt={props.item.name} />
             <h1>{props.item.brand}</h1>
             <h2>{props.item.name}</h2>
             <div>
