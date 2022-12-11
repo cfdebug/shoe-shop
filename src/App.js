@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-import React from 'react'
-import {items} from './items'
-=======
+
 import './App.css';
 import React, {useRef, useState, Suspense} from 'react'
-import SearchBar from './components/searchbar'
+import SearchBar from './components/searchBar'
 import { SearchContext } from './context/searchContext'
 import { DataContext } from './context/dataContext'
 import { createResource as fetchData} from './helper'
-import Gallery from './components/gallery';
 import Spinner from './components/spinner';
->>>>>>> 4fc04e55f635e5df9a852a474a067cbb1f834b93
 import ItemCard from './components/itemCard';
 
 
@@ -30,7 +25,7 @@ function App() {
     if(data){
       return(
         <Suspense fallback={<Spinner />}>
-          <Gallery />
+          <ItemCard/>
         </Suspense>
       )
     }
@@ -38,9 +33,6 @@ function App() {
 
   return (
     <div className="App">
-<<<<<<< HEAD
-      <ItemCard Item={items}/>
-=======
       <SearchContext.Provider value={{
         term: searchInput,
         handleSearch: handleSearch
@@ -50,7 +42,6 @@ function App() {
       <DataContext.Provider value={data}>
         {renderCards()}
       </DataContext.Provider>
->>>>>>> 4fc04e55f635e5df9a852a474a067cbb1f834b93
     </div>
   );
 }

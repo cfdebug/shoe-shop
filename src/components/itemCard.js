@@ -1,13 +1,21 @@
-import React from "react"
-
+import React from 'react'
+import { useContext } from 'react'
+import { DataContext } from '../context/dataContext'
 import Item from './item'
 
-const ItemCard = (props) => {
+const ItemCard = () => {
+    const data = useContext(DataContext)
+    const loadData = data.result.read()
+
+    const display = loadData.map((item,index) => {
+        return (
+            <Item item={item} key={index} />
+        )
+    })
+
     return (
         <div className="itemCard">
-            {props.items.map((data, i) => {
-                return <Item item={data} key={i} />
-            })}
+            {display}
         </div>
     )
 }
