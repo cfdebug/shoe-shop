@@ -9,7 +9,10 @@ const ItemCard = () => {
 
     const display = loadData.map((item,index) => {
         return (
+            <>
             <Item item={item} key={index} />
+            <button>Add to wishlist </button>
+            </>           
         )
     })
 
