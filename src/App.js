@@ -1,5 +1,6 @@
 
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React, {useRef, useState, Suspense} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './components/searchBar';
@@ -19,7 +20,7 @@ function App() {
   let [data,setData] = useState(null)
   let searchInput = useRef('')
 
-  const API_URL = 'https://the-sneaker-database.p.rapidapi.com/search?limit=10&query='
+  const API_URL = 'https://the-sneaker-database.p.rapidapi.com/search?limit=12&query='
 
   const handleSearch = (e, term) => {
     e.preventDefault()
