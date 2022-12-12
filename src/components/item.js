@@ -1,28 +1,42 @@
+import Card from 'react-bootstrap/Card'
+import { useRef } from 'react'
+import Button from 'react-bootstrap/Button'
+import Popup from 'reactjs-popup'
+
 const Item = (props) => {
+    const ref = useRef()
+    const closeTooltip = () => ref.current.close()
+
     return (
-        <div className="item">
-            <img src={props.item.image.small} alt={props.item.name} />
-            <h1>{props.item.brand}</h1>
-            <h2>{props.item.name}</h2>
-            <div>
-                <h2>Details</h2>
-                <p>
-                    SKU: {props.item.sku} <br/>
-                    colorway: {props.item.colorway} <br/>
-                    gender: {props.item.gender} <br/>
-                    release year: {props.item.releaseYear} <br/>
-                    <h2>Story</h2>
-                    <h3>{props.item.story}</h3>
-                </p>
-                <p>
-                    <h2>More Info</h2>
-                    StockX: <a href={props.item.links.stockX}>{props.item.links.stockX}</a> <br/>
-                    goat: <a href={props.item.links.goat}>{props.item.links.goat}</a> <br/>
-                    flight Club: <a href={props.item.links.flightClub}>{props.item.links.flightClub}</a> <br/>
-                    stadium Goods: <a href={props.item.links.stadiumGoods}>{props.item.links.stadiumGoods}</a>
-                </p>
-            </div>
-        </div>
+            <Card className='card' border='dark' bg='light'>
+                <Card.Header>
+                    <h1>{props.item.brand}</h1>
+                    <h2>{props.item.name}</h2>
+                </Card.Header>
+                <Card.Body>
+                    <Card.Img src={props.item.image.small} alt={props.item.name} style={{width:'50%'}} />
+                    <Card.Title><h2>Details</h2></Card.Title>
+                    <Card.Text>
+                        SKU: {props.item.sku} <br/>
+                        Colorway: {props.item.colorway} <br/>
+                        Gender: {props.item.gender} <br/>
+                        Release Year: {props.item.releaseYear} <br/>
+                    </Card.Text>
+                    <Card.Title>
+                        {props.item.story ? <Popup ref={ref} trigger={<Button variant="primary">Story</Button>} position="center center">
+                            <Card.Text>{props.item.story}</Card.Text>
+                            <Button onClick={closeTooltip}>Close</Button></Popup> : ''}
+                    </Card.Title>
+                    <Card.Text>   
+                    </Card.Text>
+                    <Card.Title><h2>Places To Buy</h2></Card.Title>
+                        {props.item.links.stockX ? <Card.Text><a href={props.item.links.stockX}>StockX</a><br/></Card.Text> : '' }
+                        {props.item.links.goat ? <Card.Text><a href={props.item.links.goat}>Goat</a><br/></Card.Text> : '' }
+                        {props.item.links.flightClub ? <Card.Text><a href={props.item.links.flightClub}>FlightClub</a><br/></Card.Text> : '' }
+                        {props.item.links.stadiumGoods ? <Card.Text><a href={props.item.links.stadiumGoods}>StadiumGoods</a><br/></Card.Text> : '' }
+                    <Button variant="primary">Add to WishList</Button>
+                </Card.Body>
+            </Card>
     )
 }
 

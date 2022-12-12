@@ -3,10 +3,10 @@ const ContactUs = () => {
     return(
         <div class="container">
         <div class="row">
-            <h1>contact us</h1>
+            <h1 className="contact1">contact us</h1>
         </div>
         <div class="row">
-            <h4 style={{textAlign:'center'}}>We'd love to hear from you!</h4>
+            <h4 className="contact4" style={{textAlign:'center'}}>We'd love to hear from you!</h4>
         </div>
         <div class="row input-container">
             <div class="col-xs-12">
