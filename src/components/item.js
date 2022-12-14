@@ -8,6 +8,12 @@ const Item = (props) => {
     const ref = useRef()
     const closeTooltip = () => ref.current.close()
 
+    const sendData = (props) => {
+        const options = {method: 'POST', headers: {'Content-Type' : 'application/x-www-form-urlencoded'}, body: JSON.stringify(props)}
+        const response = await fetch('http://localhost:3001/wishList/add',options)
+        console.log(response.status)
+    }
+
     return (
             <Card className='card' border='dark' bg='light'>
                 <Card.Header>
@@ -35,12 +41,9 @@ const Item = (props) => {
                         {props.item.links.goat ? <Card.Text><a href={props.item.links.goat}>Goat</a><br/></Card.Text> : '' }
                         {props.item.links.flightClub ? <Card.Text><a href={props.item.links.flightClub}>FlightClub</a><br/></Card.Text> : '' }
                         {props.item.links.stadiumGoods ? <Card.Text><a href={props.item.links.stadiumGoods}>StadiumGoods</a><br/></Card.Text> : '' }
-                        <form method='POST' action="/add">
-                            <Button variant="primary" type='Submit' onSubmit={props.item}>
+                            <Button variant="primary" type='Submit' onSubmit={sendData()}>
                                 Add to WishList
-                            </Button>
-                        </form>
-                    
+                            </Button>                    
                 </Card.Body>
             </Card>
     )
