@@ -26,4 +26,4 @@ const wishSchema = new Schema ({
 })
 // create models and export
 const Wish = mongoose.model('Wish', wishSchema)
-module.exports = Wish
+export default Wish
