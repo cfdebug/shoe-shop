@@ -6,7 +6,7 @@ const ObjectId = require("mongodb").ObjectId;
 wishListRoutes.post("/add", (req, res) => {
     
     dbo.Wish.create(req.body)
-    .then(res.status="Hi")
+    .then(res.send("Hi"))
     console.log("Hello"+ req.body.brand)
    });
 

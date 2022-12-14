@@ -41,7 +41,7 @@ const Item = (props) => {
                         {props.item.links.flightClub ? <Card.Text><a href={props.item.links.flightClub}>FlightClub</a><br/></Card.Text> : '' }
                         {props.item.links.stadiumGoods ? <Card.Text><a href={props.item.links.stadiumGoods}>StadiumGoods</a><br/></Card.Text> : '' }
                         
-                            <Button variant="primary" type='Submit' onClick={()=>{sendData}}>
+                            <Button variant="primary" type='Submit' onClick={sendData}>
                                 Add to WishList
                             </Button>
                         
