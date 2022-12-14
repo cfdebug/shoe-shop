@@ -1,5 +1,5 @@
-import React from 'react'
-import { useContext } from 'react'
+// inport dependancies
+import React, { useContext } from 'react'
 import { DataContext } from '../context/dataContext'
 import Item from './item'
 import Row from 'react-bootstrap/Row'
