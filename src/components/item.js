@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import Button from 'react-bootstrap/Button'
 import Popup from 'reactjs-popup'
 
+
 const Item = (props) => {
     const ref = useRef()
     const closeTooltip = () => ref.current.close()
@@ -34,7 +35,12 @@ const Item = (props) => {
                         {props.item.links.goat ? <Card.Text><a href={props.item.links.goat}>Goat</a><br/></Card.Text> : '' }
                         {props.item.links.flightClub ? <Card.Text><a href={props.item.links.flightClub}>FlightClub</a><br/></Card.Text> : '' }
                         {props.item.links.stadiumGoods ? <Card.Text><a href={props.item.links.stadiumGoods}>StadiumGoods</a><br/></Card.Text> : '' }
-                    <Button variant="primary">Add to WishList</Button>
+                        <form method='POST' action="/add">
+                            <Button variant="primary" type='Submit' onSubmit={props.item}>
+                                Add to WishList
+                            </Button>
+                        </form>
+                    
                 </Card.Body>
             </Card>
     )
