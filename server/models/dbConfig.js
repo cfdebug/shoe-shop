@@ -20,8 +20,7 @@ const wishSchema = new Schema({
     gender: String,
     image: String,
     link: {
-        type:mongoose,ObjectId,
-        ref: 'Link'
+        type:{Link}
     },
     name: String,
     releaseDate: String,
@@ -33,6 +32,6 @@ const wishSchema = new Schema({
 })
 
 const Wish = mongoose.model('Wish', wishSchema)
-const doc = await Wish.findOne().populate('link');
-doc.child
+// const doc = await Wish.findOne().populate('link');
+// doc.child
 module.exports = Wish
