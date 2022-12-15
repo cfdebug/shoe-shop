@@ -1,16 +1,19 @@
-// inport dependancies
-import React, { useContext } from 'react'
-import { RetrieveContext } from '../context/retrieveContext'
+// import dependancies
+import React, { Suspense, useContext} from 'react'
 import Item from './item'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import Spinner from './spinner';
+import { RetrieveContext } from '../context/retrieveContext'
 
 
 const WishList = () => {
-    console.log("WishList was called!")
     const {data} = useContext(RetrieveContext)
-    const loadData = data.result.read()
+    console.log("WishList was called!")
+    console.log(data)
+
+    const loadData = data.wishlist.result.read()
 
     const display = loadData.map((item,index) => {
         console.log(item)
@@ -22,6 +25,7 @@ const WishList = () => {
     })
 
     return (
+        <Suspense fallback={<Spinner />}>
         <div className="wishList">
                 <Container fluid style={{padding: '100px', textAlign: 'center'}}>
                     <Row xs={1} md={3} style={{display: 'flex', justifyContent: 'space-around'}}>
@@ -29,7 +33,9 @@ const WishList = () => {
                     </Row>
                 </Container>
         </div>
+        </Suspense>
     )
+    
 }
 
 export default WishList
