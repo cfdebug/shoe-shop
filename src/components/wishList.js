@@ -8,12 +8,12 @@ import Container from 'react-bootstrap/Container'
 
 
 const WishList = () => {
-    const retrieve = useContext(RetrieveContext)
-    retrieve.handleRetrieve()
-    const data = retrieve.data
+    console.log("WishList was called!")
+    const {data} = useContext(RetrieveContext)
     const loadData = data.result.read()
 
     const display = loadData.map((item,index) => {
+        console.log(item)
         return (
             <Col key={index} style={{display:'flex', justifyContent: 'space-around'}}>
                 <Item item={item} key={index} />

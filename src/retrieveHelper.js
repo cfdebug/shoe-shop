@@ -3,8 +3,8 @@ const fetchRetrieve = async () => {
         const response = await fetch('http://localhost:5000/wishList/',options).catch((err) => {console.log(err)})
         const resData = await response.json()
 
-        console.log(resData.results)
-        return resData.results
+        console.log(resData)
+        return resData
 }
 
 const wrapPromise = (promise) => {

@@ -16,11 +16,12 @@ import AboutUs from './components/aboutUs';
 import ContactUs from './components/contactUs';
 import Home from './components/home';
 import WishList from './components/wishList';
+import { Wish } from '../server/models';
 
 
 function App() {
   let [data,setData] = useState(null)
-  let[wishlist,setWishList] = useState(null)
+  let[wishlist,setWishlist] = useState(null)
   let searchInput = useRef('')
 
   const API_URL = 'https://the-sneaker-database.p.rapidapi.com/search?limit=12&query='
@@ -32,12 +33,13 @@ function App() {
 }
 
 const handleRetrieve = (e) => {
+  console.log("I was Called!")
   e.preventDefault()
-  setWishList(fetchRetrieve())
+  setWishlist(fetchRetrieve())
 }
 
   const renderCards = () => {
-    if(data){
+    if(wishlist){
       return(
         <Suspense fallback={<Spinner />}>
           <ItemCard/>
@@ -47,14 +49,7 @@ const handleRetrieve = (e) => {
   }
 
   const renderWishList = () => {
-    if(wishlist){
-      return(
-        <Suspense fallback={<Spinner />}>
-          <WishList/>
-        </Suspense>
-      )
-    }else{
-      handleRetrieve()
+    if(data){
       return(
         <Suspense fallback={<Spinner />}>
           <WishList/>
@@ -66,33 +61,37 @@ const handleRetrieve = (e) => {
 
   return (
     <div className="App">
-      <Router>
+        <Router>
         <SearchContext.Provider value={{
           term: searchInput,
           handleSearch: handleSearch
         }}>
           <SearchBar/>
+          </SearchContext.Provider>
+          <RetrieveContext.Provider value={{
+              data: {wishlist},
+              handleRetrieve: handleRetrieve
+          }}>
           <NaviBar />
-
-        
-        </SearchContext.Provider>
+          </RetrieveContext.Provider>
+      
         <DataContext.Provider value={data}>
           {renderCards()}
         </DataContext.Provider>
-        <RetrieveContext.Provider value={{
-              data: wishlist,
-              handleRetrieve: handleRetrieve
-          }}>
         
+        <RetrieveContext.Provider value={{
+              data: {wishlist},
+              handleRetrieve: handleRetrieve,
+              handleRender: renderWishList
+          }}>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/about" element={AboutUs} />
+          <Route path="/about" element={<AboutUs/>} />
           <Route path="/contact" element={<ContactUs/>} />
-          <Route path="/wishlist" element={renderWishList()} />
-        </Routes>
-        </RetrieveContext.Provider>
+          <Route path="/wishlist" element={<WishList/>} />
+        </Routes> 
+          </RetrieveContext.Provider>
       </Router>
-
     </div>
   );
 }

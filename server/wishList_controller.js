@@ -11,8 +11,8 @@ wishListRoutes.post("/add", (req, res) => {
     console.log("Hello"+ req.body.brand)
    });
 
-wishListRoutes.get("/",(req, res)=> {
-    dbo.Wish.find()
+wishListRoutes.get("/", async (req, res)=> {
+     await dbo.Wish.find()
     .then((wishes) => {
         res.json(wishes)
     })
