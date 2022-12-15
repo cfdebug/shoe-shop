@@ -6,7 +6,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './components/searchBar';
 import { SearchContext } from './context/searchContext';
 import { DataContext } from './context/dataContext';
+import { RetrieveContext } from './context/retrieveContext';
 import { createResource as fetchData} from './helper';
+import { createResource as fetchRetrieve} from './retrieveHelper';
 import Spinner from './components/spinner';
 import ItemCard from './components/itemCard';
 import NaviBar from './components/NaviBar';
@@ -18,6 +20,7 @@ import WishList from './components/wishList';
 
 function App() {
   let [data,setData] = useState(null)
+  let[wishlist,setWishList] = useState(null)
   let searchInput = useRef('')
 
   const API_URL = 'https://the-sneaker-database.p.rapidapi.com/search?limit=12&query='
@@ -26,6 +29,11 @@ function App() {
     e.preventDefault()
     setData(fetchData(term, API_URL))
     
+}
+
+const handleRetrieve = (e) => {
+  e.preventDefault()
+  setWishList(fetchRetrieve())
 }
 
   const renderCards = () => {
@@ -37,6 +45,24 @@ function App() {
       )
     }
   }
+
+  const renderWishList = () => {
+    if(wishlist){
+      return(
+        <Suspense fallback={<Spinner />}>
+          <WishList/>
+        </Suspense>
+      )
+    }else{
+      handleRetrieve()
+      return(
+        <Suspense fallback={<Spinner />}>
+          <WishList/>
+        </Suspense>
+      )
+    }
+  }
+
 
   return (
     <div className="App">
@@ -53,13 +79,20 @@ function App() {
         <DataContext.Provider value={data}>
           {renderCards()}
         </DataContext.Provider>
+        <RetrieveContext.Provider value={{
+              data: wishlist,
+              handleRetrieve: handleRetrieve
+          }}>
+        
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/about" element={AboutUs} />
           <Route path="/contact" element={<ContactUs/>} />
-          <Route path="/wishlist" element={<WishList/>} />
+          <Route path="/wishlist" element={renderWishList()} />
         </Routes>
+        </RetrieveContext.Provider>
       </Router>
+
     </div>
   );
 }
