@@ -8,6 +8,8 @@ app.use(express.json());
 app.use("/wishList", require("./wishList_controller"));
 app.use(express.urlencoded({ extended: false }))
 
-
+app.get("/", (req, res) => {
+    res.send("Express on Vercel");
+  });
  
-app.listen(process.env.PORT)
+app.listen(5000)

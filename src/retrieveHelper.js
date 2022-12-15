@@ -1,8 +1,8 @@
 const fetchRetrieve = async () => {
+    // 'http://localhost:5000/wishList/'
         const options = {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}}
-        const response = await fetch('http://localhost:5000/wishList/',options).catch((err) => {console.log(err)})
+        const response = await fetch('https://shoe-shop-661m.vercel.app/wishList',options).catch((err) => {console.log(err)})
         const resData = await response.json()
-
         console.log(resData)
         return resData
 }
