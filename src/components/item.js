@@ -7,8 +7,8 @@ import Popup from 'reactjs-popup'
 const Item = (props) => {
     const ref = useRef()
     const closeTooltip = () => ref.current.close()
-    const sendData = async () => {
-        const options = {method: 'POST', headers: {'Content-Type' : 'application/x-www-form-urlencoded'}, body: props.item}
+    const sendData = async (data) => {
+        const options = {method: 'POST', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}, body: JSON.stringify(data)}
         const response = await fetch('http://localhost:5000/wishList/add',options)
         console.log(response.status)
     }
@@ -41,7 +41,7 @@ const Item = (props) => {
                         {props.item.links.flightClub ? <Card.Text><a href={props.item.links.flightClub}>FlightClub</a><br/></Card.Text> : '' }
                         {props.item.links.stadiumGoods ? <Card.Text><a href={props.item.links.stadiumGoods}>StadiumGoods</a><br/></Card.Text> : '' }
                         
-                            <Button variant="primary" type='Submit' onClick={()=>{sendData}}>
+                            <Button variant="primary" type='Submit' onClick={() => sendData(props.item)}>
                                 Add to WishList
                             </Button>
                         
