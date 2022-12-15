@@ -7,8 +7,8 @@ wishListRoutes.post("/add", (req, res) => {
     console.log("Data "+ req.body.brand) 
     
     dbo.Wish.create(req.body)
-    .then(res.send="Hi")
-
+    .then(res.send("Hi"))
+    console.log("Hello"+ req.body.brand)
    });
 
 wishListRoutes.get("/",(req, res)=> {
