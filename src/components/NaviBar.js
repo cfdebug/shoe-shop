@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { RetrieveContext } from '../context/retrieveContext'
 
 
 export default function NaviBar () {
+  const {handleRetrieve} = useContext(RetrieveContext)
+
     return (
         <ul>
               <li>
@@ -14,7 +18,7 @@ export default function NaviBar () {
                 <Link to="/contact">Contact Us</Link>
               </li>
               <li>
-                <Link to="/wishlist">Wishlist</Link>
+                <Link to="/wishlist" onClick={(e) => {handleRetrieve(e)}}>Wishlist</Link>
               </li>
         </ul>
     )
