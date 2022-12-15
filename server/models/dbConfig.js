@@ -11,12 +11,19 @@ const linkSchema = new Schema({
     stadiumGoods: String
 })
 
+const imageSchema = new Schema({
+    360: Array,
+    original: String,
+    small: String,
+    thumbnail: String
+})
+
 const wishSchema = new Schema({
     brand: String,
     colorway: String,
     estimatedMarketValue: Number,
     gender: String,
-    image: String,
+    image: { type: imageSchema },
     links: { type: linkSchema },
     name: String,
     releaseDate: String,
