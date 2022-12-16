@@ -3,7 +3,6 @@ import { useRef, useContext} from 'react'
 import Button from 'react-bootstrap/Button'
 import Popup from 'reactjs-popup'
 import { RetrieveContext } from '../context/retrieveContext'
-// `https://shoe-shop-661m.vercel.app/wishList/delete/${data._id}`
 
 const WishItem = (props) => {
     const ref = useRef()
@@ -12,7 +11,7 @@ const WishItem = (props) => {
 
     const sendData = async (data) => {
         const options = {method: 'DELETE', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}}
-        const response = await fetch(`http://localhost:5000/wishlist/delete/${data._id}`,options).then(() => {handleRefresh()})
+        const response = await fetch(`https://shoe-shop-661m.vercel.app/wishList/delete/${data._id}`,options).then(() => {handleRefresh()})
         
     }
 

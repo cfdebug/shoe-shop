@@ -32,13 +32,11 @@ function App() {
 }
 
 const handleRetrieve = (e) => {
-    console.log("I was Called!")
     e.preventDefault()
     setWishList(fetchRetrieve())
   }
 
   const handleRefresh = () => {
-    console.log("Refresh was Called!")
     setWishList(fetchRetrieve())
   }
 

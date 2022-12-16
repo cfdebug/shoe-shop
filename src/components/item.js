@@ -10,7 +10,6 @@ const Item = (props) => {
     const sendData = async (data) => {
         const options = {method: 'POST', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}, body: JSON.stringify(data)}
         const response = await fetch('https://shoe-shop-661m.vercel.app/wishList/add',options)
-        console.log(response.status)
     }
 
     return (
