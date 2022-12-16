@@ -1,15 +1,17 @@
 import Card from 'react-bootstrap/Card'
-import { useRef } from 'react'
+import { useRef, useState} from 'react'
 import Button from 'react-bootstrap/Button'
 import Popup from 'reactjs-popup'
 
 
 const Item = (props) => {
+    const [state, setState] = useState(true)
     const ref = useRef()
     const closeTooltip = () => ref.current.close()
     const sendData = async (data) => {
+        console.log(data)
         const options = {method: 'POST', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}, body: JSON.stringify(data)}
-        const response = await fetch('https://shoe-shop-661m.vercel.app/wishList/add',options)
+        const response = await fetch('https://shoe-shop-661m.vercel.app/wishList/add',options).then(() => {setState(!state)})
     }
 
     return (
@@ -19,7 +21,7 @@ const Item = (props) => {
                     <h2>{props.item.name}</h2>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Img src={props.item.image.small} alt={props.item.name} style={{width:'50%'}} />
+                    {props.item.image.small ? <Card.Img src={props.item.image.small} alt={props.item.name} style={{width:'50%'}} /> : 'No Image Available'}
                     <Card.Title><h2>Details</h2></Card.Title>
                     <Card.Text>
                         SKU: {props.item.sku} <br/>
@@ -40,9 +42,9 @@ const Item = (props) => {
                         {props.item.links.flightClub ? <Card.Text><a href={props.item.links.flightClub}>FlightClub</a><br/></Card.Text> : '' }
                         {props.item.links.stadiumGoods ? <Card.Text><a href={props.item.links.stadiumGoods}>StadiumGoods</a><br/></Card.Text> : '' }
                         
-                            <Button variant="primary" type='Submit' onClick={() => sendData(props.item)}>
+                            {state ? <Button variant="primary" type='Submit' onClick={() => sendData(props.item)}>
                                 Add to WishList
-                            </Button>
+                            </Button> : ''}
                         
                 </Card.Body>
             </Card>
