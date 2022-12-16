@@ -17,7 +17,7 @@ const SearchBar = () => {
         }>
             
             <input ref={term} type='text' placeholder='Enter a search term here'/>
-            <Button variant = 'light' className='search-btn' onClick={(e) => handleSearch(e, term.current.value)}><Link to="/search">Search</Link></Button>
+            <Button className="search-btn" variant='light' onClick={(e) => handleSearch(e, term.current.value)}><Link to="/search">Search</Link></Button>
         </form>
     </div>
     )

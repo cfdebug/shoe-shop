@@ -161,3 +161,7 @@ font-style: normal;
 .navi-btn {
   background-color: gray;
 }
+
+.search-btn {
+  margin: 15px
+}
