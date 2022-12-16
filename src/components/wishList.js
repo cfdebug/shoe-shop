@@ -1,6 +1,6 @@
 // import dependancies
 import React, { Suspense, useContext} from 'react'
-import Item from './item'
+import WishItem from './wishItem'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -19,7 +19,7 @@ const WishList = () => {
         console.log(item)
         return (
             <Col key={index} style={{display:'flex', justifyContent: 'space-around'}}>
-                <Item item={item} key={index} />
+                <WishItem item={item} key={index} />
             </Col>
         )
     })
