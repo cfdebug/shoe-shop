@@ -37,6 +37,11 @@ const handleRetrieve = (e) => {
     setWishList(fetchRetrieve())
   }
 
+  const handleRefresh = () => {
+    console.log("Refresh was Called!")
+    setWishList(fetchRetrieve())
+  }
+
   return (
     <div className="App">
         <Router>
@@ -48,7 +53,8 @@ const handleRetrieve = (e) => {
           </SearchContext.Provider>
           <RetrieveContext.Provider value={{
             data:{wishlist},
-            handleRetrieve:handleRetrieve
+            handleRetrieve:handleRetrieve,
+            handleRefresh:handleRefresh
         }}>
           <NaviBar/>
         <DataContext.Provider value={data}>

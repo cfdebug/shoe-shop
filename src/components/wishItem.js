@@ -8,11 +8,11 @@ import { RetrieveContext } from '../context/retrieveContext'
 const WishItem = (props) => {
     const ref = useRef()
     const closeTooltip = () => ref.current.close()
-    const {handleRetrieve} = useContext(RetrieveContext)
+    const {handleRefresh} = useContext(RetrieveContext)
 
     const sendData = async (data) => {
         const options = {method: 'DELETE', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}}
-        const response = await fetch(`http://localhost:5000/wishlist/delete/${data._id}`,options).then((response) => {handleRetrieve(response)})
+        const response = await fetch(`http://localhost:5000/wishlist/delete/${data._id}`,options).then(() => {handleRefresh()})
         
     }
 
