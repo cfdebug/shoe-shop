@@ -47,18 +47,18 @@ function App() {
         }}>
           <SearchBar/>
           <NaviBar />
+          
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/about" element={AboutUs} />
+            <Route path="/contact" element={<ContactUs/>} />
+            <Route path="/wishlist" element={<WishList/>} />
+          </Routes>
 
-        
         </SearchContext.Provider>
         <DataContext.Provider value={data}>
           {renderCards()}
         </DataContext.Provider>
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/about" element={AboutUs} />
-          <Route path="/contact" element={<ContactUs/>} />
-          <Route path="/wishlist" element={<WishList/>} />
-        </Routes>
       </Router>
     </div>
   );
