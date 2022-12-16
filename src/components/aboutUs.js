@@ -4,20 +4,6 @@ function App() {
     <div>
       <header>
 
-<nav>
-
-    <ul>
-
-        <li><a href="/">Home</a></li>
-
-        <li><a href="Contact us.js">Contact us</a></li>
-
-        <li><a href="Search.js">Search</a></li>
-
-    </ul>
-
-</nav>
-
 </header>
 
 <main>
@@ -41,31 +27,13 @@ function App() {
 
        <a href="mailto:drack92@hotmail.com?subject=Hello%20Devs%20=)">Send us an email</a>  
 
-      <p></p>and let us know how can we improve, all suggestions welcomed.
+      <p>and let us know how can we improve, all suggestions welcomed.</p>
 
     </p>
 
 </article>
 
 </main>
-
-<footer>
-
-<nav>
-
-    <ul>
-
-    <li><a href="/">Home</a></li>
-
-<li><a href="Contact us.js">Contact us</a></li>
-
-<li><a href="Search.js">Search</a></li>
-
-    </ul>
-
-</nav>
-
-</footer>
     </div>
   );
 }

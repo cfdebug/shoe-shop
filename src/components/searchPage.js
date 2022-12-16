@@ -1,4 +1,4 @@
-import React, {useContext, Suspense} from 'react'
+import React, {Suspense} from 'react'
 import Spinner from './spinner';
 import ItemCard from './itemCard';
 
