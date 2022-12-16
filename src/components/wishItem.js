@@ -12,8 +12,8 @@ const WishItem = (props) => {
 
     const sendData = async (data) => {
         const options = {method: 'DELETE', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}}
-        const response = await fetch(`https://shoe-shop-661m.vercel.app/wishList/delete/${data._id}`,options)
-        navigate('/wishlist')
+        await fetch(`https://shoe-shop-661m.vercel.app/wishList/delete/${data._id}`,options).then(navigate('/wishlist'))
+        
     }
 
     return (
