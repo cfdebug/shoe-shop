@@ -18,6 +18,13 @@ wishListRoutes.get("/", async (req, res)=> {
     })
 })
 
+wishListRoutes.delete("/delete/:id", async (req, res)=> {
+    await dbo.Wish.findByIdAndDelete(req.params.id)
+   .then(() => {
+       res.send("Item Deleted from Wishlist")
+   })
+})
+
 
 
    module.exports = wishListRoutes

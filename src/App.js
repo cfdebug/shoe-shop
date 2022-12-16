@@ -1,7 +1,7 @@
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, {useRef, useState, Suspense} from 'react';
+import React, {useRef, useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './components/searchBar';
 import { SearchContext } from './context/searchContext';
