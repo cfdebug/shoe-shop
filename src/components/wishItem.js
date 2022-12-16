@@ -7,10 +7,12 @@ import Popup from 'reactjs-popup'
 const WishItem = (props) => {
     const ref = useRef()
     const closeTooltip = () => ref.current.close()
+    const forceUpdate = React.useCallback(() => updateState({}),[])
+
     const sendData = async (data) => {
         const options = {method: 'DELETE', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}}
         const response = await fetch(`https://shoe-shop-661m.vercel.app/wishList/delete/${data._id}`,options)
-        console.log(response.status)
+        forceUpdate()
     }
 
     return (
