@@ -1,5 +1,5 @@
 // import dependancies
-import React, { Suspense, useContext} from 'react'
+import React, { Suspense } from 'react'
 import WishList from './wishList';
 import Spinner from './spinner';
 
