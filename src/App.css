@@ -157,3 +157,7 @@ font-style: normal;
 .card {
   margin: 10px
 }
+
+.navi-btn {
+  background-color: gray;
+}

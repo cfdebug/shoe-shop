@@ -6,18 +6,21 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './components/searchBar';
 import { SearchContext } from './context/searchContext';
 import { DataContext } from './context/dataContext';
+import { RetrieveContext } from './context/retrieveContext';
 import { createResource as fetchData} from './helper';
-import Spinner from './components/spinner';
-import ItemCard from './components/itemCard';
+import { createResource as fetchRetrieve} from './retrieveHelper';
+import SearchResults from './components/searchPage';
 import NaviBar from './components/NaviBar';
 import AboutUs from './components/aboutUs';
 import ContactUs from './components/contactUs';
 import Home from './components/home';
-import WishList from './components/wishList';
+import WishPage from './components/wishPage';
 
 
 function App() {
   let [data,setData] = useState(null)
+  let[wishlist,setWishList] = useState(null)
+  
   let searchInput = useRef('')
 
   const API_URL = 'https://the-sneaker-database.p.rapidapi.com/search?limit=12&query='
@@ -28,37 +31,36 @@ function App() {
     
 }
 
-  const renderCards = () => {
-    if(data){
-      return(
-        <Suspense fallback={<Spinner />}>
-          <ItemCard/>
-        </Suspense>
-      )
-    }
+const handleRetrieve = (e) => {
+    console.log("I was Called!")
+    e.preventDefault()
+    setWishList(fetchRetrieve())
   }
 
   return (
     <div className="App">
-      <Router>
+        <Router>
         <SearchContext.Provider value={{
           term: searchInput,
           handleSearch: handleSearch
         }}>
           <SearchBar/>
-          <NaviBar />
-          
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/about" element={AboutUs} />
-            <Route path="/contact" element={<ContactUs/>} />
-            <Route path="/wishlist" element={<WishList/>} />
-          </Routes>
-
-        </SearchContext.Provider>
+          </SearchContext.Provider>
+          <RetrieveContext.Provider value={{
+            data:{wishlist},
+            handleRetrieve:handleRetrieve
+        }}>
+          <NaviBar/>
         <DataContext.Provider value={data}>
-          {renderCards()}
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/search" element={<SearchResults/>} />
+          <Route path="/about" element={<AboutUs/>} />
+          <Route path="/contact" element={<ContactUs/>} />
+          <Route path="/wishlist" element={<WishPage/>} />
+        </Routes> 
         </DataContext.Provider>
+        </RetrieveContext.Provider>
       </Router>
     </div>
   );
