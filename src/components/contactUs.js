@@ -1,43 +1,48 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Badge from 'react-bootstrap/Badge';
 const ContactUs = () => {
 
-    return(
-        <div className="container">
-        <div className="row">
-            <h1 className="contact1">contact us</h1>
-        </div>
-        <div className="row">
-            <h4 className="contact4" style={{textAlign:'center'}}>We'd love to hear from you!</h4>
-        </div>
-        <div className="row input-container">
-            <div className="col-xs-12">
-              <div className="styled-input wide">
-                <input type="text" required />
-                <label>Name</label> 
-              </div>
-            </div>
-            <div className="col-md-6 col-sm-12">
-              <div className="styled-input">
-                <input type="text" required />
-                <label>Email</label> 
-              </div>
-            </div>
-            <div className="col-md-6 col-sm-12">
-              <div className="styled-input" style={{float:'right'}}>
-                <input type="text" required />
-                <label>Phone Number</label> 
-              </div>
-            </div>
-            <div className="col-xs-12">
-              <div className="styled-input wide">
-                <textarea required></textarea>
-                <label>Message</label>
-              </div>
-            </div>
-            <div className="col-xs-12">
-              <div className="btn-lrg submit-btn">Send Message</div>
-            </div>
-        </div>
-      </div>
-    )}
+  
+  return (
+
+
+    <div>
+
+<h1 style={{padding:'35px', fontFamily:'sans-serif'}}>CONTACT US</h1>
+   
+    <Form style={{paddingLeft:'100px', paddingRight:'100px'}}>
+      <Row>
+        <Col>
+          <Form.Control placeholder="First name" />
+        </Col>
+        <Col>
+          <Form.Control placeholder="Last name" />
+        </Col>
+      </Row>
+
+
+      <Row style={{paddingTop:'35px'}}>
+        <Col>
+          <Form.Control placeholder="Email" />
+        </Col>
+       
+      </Row>
+
+      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Leave Your comment</Form.Label>
+        <Form.Control as="textarea" rows={3} />
+      </Form.Group>
+
+    </Form>
+
+</div>
+    
+  );
+}
+
 
 export default ContactUs
