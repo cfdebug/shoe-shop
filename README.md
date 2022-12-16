@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+#Shoe-Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The purpose of this site is to be able to save shoes that you like and/or want to buy. While also having quick links to multiple different external sites for purchase.
 
-## Available Scripts
+##Home Page
+This is the base page that you will start your shoe finding journey.  
 
-In the project directory, you can run:
+##About the Page
+The about page is to do a quick explaination of who we are and the site project.
 
-### `npm start`
+##Contact Us
+Quick Contact page for reaching out to us.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##WishList
+This is the Meat and Potatoes of our page. 
+The shoes that you have saved to your wishlist will render here with all of the information from the search function. 
+Already have the shoes or decided you don't like all black Air Force 1's, just click the remove from wishlist button and the page will rerender without them. 
+The external links will work just as before.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##Search
+The Search page will render when you type in any keyword to find what you are looking for. 
+*men's or women's
+*colors, red, blue, etc
+*shoe names Jordan, Nike, Adidas etc
+*any combination of above will work aswell ex. Air Jordan 1 Retro '94 GS 'Anthracite Red'
+*found a shoe elsewhere and want to find it easy use the SKU!
 
-### `npm test`
+###known issues
+*while on Wishlist page if you refresh the page it will not render anything, this is not a problem on other pages
+*you are able to add multiple pairs of the same shoe
+*some shoes in the api are missing crucial information i.e. image
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###fixed issues
+*fixed issue with searches rendering on every page
+*fixed issue with wishlist not rerendering after removing an item
+*fixed issue where add to wishlist button stays rendered on the page after clicking it
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+###Future Potential Features
+*Have a fun scrolling banner to welcome guests to our page as well as throw some things that they might find interesting.  
+*maybe transition to a collection based site? or make a viation of this site for such a perpose
+*persistant searches on the home page
+*individual login-in credentials
