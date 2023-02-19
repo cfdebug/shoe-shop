@@ -1,17 +1,27 @@
 import Card from 'react-bootstrap/Card'
-import { useRef, useState} from 'react'
+import { useRef, useContext} from 'react'
 import Button from 'react-bootstrap/Button'
 import Popup from 'reactjs-popup'
+import { RetrieveContext } from '../context/retrieveContext'
+import React from 'react'
 
+interface propsType {
+    item:any;
+}
 
-const Item = (props) => {
-    const [state, setState] = useState(true)
-    const ref = useRef()
+interface refType {
+    current:any;
+}
+
+const WishItem = (props:propsType) => {
+    const ref:refType = useRef()
     const closeTooltip = () => ref.current.close()
-    const sendData = async (data) => {
-        console.log(data)
-        const options = {method: 'POST', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}, body: JSON.stringify(data)}
-        const response = await fetch('https://shoe-shop-661m.vercel.app/wishList/add',options).then(() => {setState(!state)})
+    const {handleRefresh}:any = useContext(RetrieveContext)
+
+    const sendData = async (data:any) => {
+        const options = {method: 'DELETE', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}}
+        const response = await fetch(`https://shoe-shop-661m.vercel.app/wishList/delete/${data._id}`,options).then(() => {handleRefresh()})
+        
     }
 
     return (
@@ -21,7 +31,7 @@ const Item = (props) => {
                     <h2>{props.item.name}</h2>
                 </Card.Header>
                 <Card.Body>
-                    {props.item.image.small ? <Card.Img src={props.item.image.small} alt={props.item.name} style={{width:'50%'}} /> : 'No Image Available'}
+                    <Card.Img src={props.item.image.small} alt={props.item.name} style={{width:'50%'}} />
                     <Card.Title><h2>Details</h2></Card.Title>
                     <Card.Text>
                         SKU: {props.item.sku} <br/>
@@ -42,12 +52,12 @@ const Item = (props) => {
                         {props.item.links.flightClub ? <Card.Text><a href={props.item.links.flightClub}>FlightClub</a><br/></Card.Text> : '' }
                         {props.item.links.stadiumGoods ? <Card.Text><a href={props.item.links.stadiumGoods}>StadiumGoods</a><br/></Card.Text> : '' }
                         
-                            {state ? <Button variant="primary" type='Submit' onClick={() => sendData(props.item)}>
-                                Add to WishList
-                            </Button> : ''}
+                            <Button variant="warning" type='submit' onClick={() => sendData(props.item)}>
+                                Remove from WishList
+                            </Button>
                         
                 </Card.Body>
             </Card>
     )}
 
-export default Item
+export default WishItem

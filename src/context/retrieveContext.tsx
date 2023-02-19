@@ -1,6 +1,6 @@
 import {createContext} from 'react'
 
-export const RetrieveContext = createContext({
+export const RetrieveContext:any = createContext({
     data: [],
     handleRetrieve: () => {},
     handleRefresh: () => {}

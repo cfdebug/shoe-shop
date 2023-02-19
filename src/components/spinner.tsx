@@ -1,4 +1,5 @@
-import loading_spinner from '../Loading.gif'
+import React from 'react';
+const loading_spinner = require("../Loading.gif")
 
 const Spinner = () => {
     return (

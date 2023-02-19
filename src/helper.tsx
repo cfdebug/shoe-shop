@@ -1,4 +1,4 @@
-const fetchSearch = async (searchTerm, path) => {
+const fetchSearch = async (searchTerm: string, path: string) => {
 
     const options = {
         method: 'GET',
@@ -15,7 +15,7 @@ const fetchSearch = async (searchTerm, path) => {
     return resData.results
 }
 
-const wrapPromise = (promise) => {
+const wrapPromise = (promise: Promise<any>) => {
     let status = 'pending'
     let result = ''
 
@@ -41,7 +41,7 @@ const wrapPromise = (promise) => {
     }
 }
 
-export const createResource = (searchTerm, path) => {
+export const createResource = (searchTerm: string, path: string) => {
     return {
         result: wrapPromise(fetchSearch(searchTerm, path))
     }

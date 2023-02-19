@@ -18,20 +18,20 @@ import WishPage from './components/wishPage';
 
 
 function App() {
-  let [data,setData] = useState(null)
-  let[wishlist,setWishList] = useState(null)
+  let [data,setData]:any = useState(null)
+  let[wishlist,setWishList]:any = useState(null)
   
   let searchInput = useRef('')
 
   const API_URL = 'https://the-sneaker-database.p.rapidapi.com/search?limit=12&query='
 
-  const handleSearch = (e, term) => {
+  const handleSearch = (e:any, term:string) => {
     e.preventDefault()
     setData(fetchData(term, API_URL))
     
 }
 
-const handleRetrieve = (e) => {
+const handleRetrieve = (e:any) => {
     e.preventDefault()
     setWishList(fetchRetrieve())
   }

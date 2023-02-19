@@ -6,11 +6,12 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 
+
 const ItemCard = () => {
-    const data = useContext(DataContext)
+    const data:any = useContext(DataContext)
     const loadData = data.result.read()
 
-    const display = loadData.map((item,index) => {
+    const display = loadData.map((item:object,index:number) => {
         return (
             <Col key={index} style={{display:'flex', justifyContent: 'space-around'}}>
                 <Item item={item} key={index} />

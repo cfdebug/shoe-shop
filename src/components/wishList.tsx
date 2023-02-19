@@ -9,11 +9,11 @@ import { RetrieveContext } from '../context/retrieveContext'
 
 
 const WishList = () => {
-    const {data} = useContext(RetrieveContext)
+    const {data}:any = useContext(RetrieveContext)
 
     const loadData = data.wishlist.result.read()
 
-    const display = loadData.map((item,index) => {
+    const display = loadData.map((item:object,index:number) => {
         return (
             <Col key={index} style={{display:'flex', justifyContent: 'space-around'}}>
                 <WishItem item={item} key={index} />

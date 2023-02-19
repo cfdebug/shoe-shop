@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar'
 
 
 export default function NaviBar () {
-  const {handleRetrieve} = useContext(RetrieveContext)
+  const {handleRetrieve}:any = useContext(RetrieveContext)
     return (
         <Navbar bg="light" expand="lg">
           <Container>

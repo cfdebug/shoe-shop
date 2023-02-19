@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 
 const SearchBar = () => {
 
-    const {term, handleSearch} = useContext(SearchContext)
+    const {term, handleSearch}:any = useContext(SearchContext)
     const navigate = useNavigate()
 
     return(

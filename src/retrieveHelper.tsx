@@ -1,19 +1,19 @@
 const fetchRetrieve = async () => {
         const options = {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type' : 'application/json'}}
-        const response = await fetch('https://shoe-shop-661m.vercel.app/wishList',options).catch((err) => {console.log(err)})
+        const response:any = await fetch('https://shoe-shop-661m.vercel.app/wishList',options).catch((err) => {console.log(err)})
         const resData = await response.json()
 
         return resData
 }
 
-const wrapPromise = (promise) => {
+const wrapPromise = (promise:any) => {
     let status = 'pending'
     let result = ''
 
-    let suspender = promise.then(response => {
+    let suspender = promise.then((response: string) => {
         status = 'success'
         result = response
-    }, err => {
+    }, (err: string) => {
         status = 'error'
         result = err
     })
